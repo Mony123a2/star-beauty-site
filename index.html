@@ -335,7 +335,8 @@ function animateTo(f, target, ms) {
   if (anim) cancelAnimationFrame(anim);
   const from = { ...view[f] }, t0 = performance.now();
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || ms === 0) { view[f] = target; vb(f); return; }
+  // rAF is paused while the document is hidden, so jump straight to the target
+  if (reduce || ms === 0 || document.hidden) { view[f] = target; vb(f); return; }
   const tick = (now) => {
     const p = Math.min(1, (now - t0) / ms);
     const e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
