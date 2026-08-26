@@ -2,13 +2,13 @@
 GROUND,g-retail-counter,RETAIL COUNTER,ركن بيع المنتجات,H,20.16,12 م.ط,0,0,6300,3200
 GROUND,g-waiting-lounge,WAITING LOUNGE,صالة الانتظار,H,45.12,18 مقعد,6300,0,20400,3200
 GROUND,g-reception,RECEPTION,الاستقبال والكاشير,H,30.08,نقطتا خدمة,20400,0,29800,3200
-GROUND,g-hair-wash,HAIR WASH,مغاسل الشعر,S,36.08,8 مغاسل,0,3200,4400,11400
+GROUND,g-hair-wash,HAIR WASH,مغاسل الشعر,S,36.08,6 مغاسل,0,3200,4400,11400
 GROUND,g-cutting-styling,CUTTING / STYLING,قص وتصفيف الشعر,S,137.76,20 كرسي,4400,3200,21200,11400
 GROUND,g-colour-mixing,COLOUR / MIXING,الصبغة وغرفة الخلط,S,41,6 كراسي,21200,3200,26200,11400
 GROUND,g-hair-treatments,HAIR TREATMENTS,علاجات الشعر,S,29.52,4 كراسي,26200,3200,29800,11400
 GROUND,g-main-corridor,MAIN CORRIDOR,الممر الرئيسي,H,47.68,,0,11400,29800,13000
 GROUND,g-stair-01,STAIR 01,بيت الدرج 1,O,21.62,21 قائمة,0,13000,4600,17700
-GROUND,g-showers-changing,SHOWERS / CHANGING,الدشات والتبديل,H,22.56,5 دشات,4600,13000,9400,17700
+GROUND,g-showers-changing,SHOWERS / CHANGING,الدشات والتبديل,H,22.56,4 دشات,4600,13000,9400,17700
 GROUND,g-moroccan-bath,MOROCCAN BATH,الحمام المغربي,S,34.78,غرفتان,9400,13000,16800,17700
 GROUND,g-sauna-steam,SAUNA / STEAM,الساونا والبخار,S,21.62,كابينتان,16800,13000,21400,17700
 GROUND,g-plant-room,PLANT ROOM,غرفة المعدات,O,17.86,,21400,13000,25200,17700
@@ -17,7 +17,7 @@ MEZZ,m-gallery-walkway,GALLERY WALKWAY,ممر الشرفة,H,35.76,,0,3200,29800
 MEZZ,m-makeup,MAKEUP,المكياج,S,49,7 محطات,0,4400,7000,11400
 MEZZ,m-brow-lash,BROW / LASH,الحواجب والرموش,S,28,4 أسرّة,7000,4400,11000,11400
 MEZZ,m-client-wc,CLIENT WC,دورات مياه الزبائن,H,16.8,4 وحدات,11000,4400,13400,11400
-MEZZ,m-manicure,MANICURE,المانيكير,S,36.4,8 محطات,13400,4400,18600,11400
+MEZZ,m-manicure,MANICURE,المانيكير,S,36.4,6 محطات,13400,4400,18600,11400
 MEZZ,m-pedicure,PEDICURE,البيديكير,S,29.4,6 كراسي,18600,4400,22800,11400
 MEZZ,m-bridal-suite,BRIDAL SUITE,جناح العرايس,S,29.4,جناح,22800,4400,27000,11400
 MEZZ,m-laundry,LAUNDRY,غرفة الغسيل والمناشف,O,19.6,,27000,4400,29800,11400
