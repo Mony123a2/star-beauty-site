@@ -116,6 +116,10 @@
   .detail .en { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); letter-spacing: .06em; }
   .detail .fig { font-family: var(--mono); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .detail .hintx { color: var(--ink-3); font-size: 14px; }
+  .detail .dlinks { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .detail .plink { border: 1px solid var(--rule-strong); border-inline-start: 1px solid var(--rule-strong); padding: 5px 10px; font-size: 12.5px; }
+  .detail #clr { font-family: var(--ar); font-size: 13px; background: none; border: 1px solid var(--rule-strong); padding: 5px 12px; color: var(--ink-2); cursor: pointer; }
+  .detail #clr:hover { color: var(--ink); background: var(--surface-2); }
 
   .tag { display: inline-block; font-size: 11.5px; padding: 1px 9px; white-space: nowrap; border: 1px solid currentColor; }
   .t-S { color: var(--svc); background: var(--svc-bg); }
@@ -145,13 +149,20 @@
 
   .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; }
   .idx { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-  .idx > button {
+  .idx .row { display: flex; align-items: stretch; background: var(--surface); }
+  .idx .row:hover { background: var(--surface-2); }
+  .idx .row.on { background: var(--svc-bg); }
+  .plink { display: flex; align-items: center; gap: 5px; padding: 0 10px; border-inline-start: 1px solid var(--rule);
+    font-size: 12px; color: var(--ink-3); text-decoration: none; white-space: nowrap; flex: none; }
+  .plink:hover { color: var(--svc); background: var(--svc-bg); }
+  .plink.eq:hover { color: var(--host); background: var(--host-bg); }
+  .plink svg { width: 13px; height: 13px; flex: none; }
+  .idx .row > button {
     display: grid; grid-template-columns: 10px 1fr auto auto; align-items: center; gap: 11px;
     background: var(--surface); border: 0; padding: 10px 13px; cursor: pointer;
     font-family: var(--ar); font-size: 14.5px; color: var(--ink); text-align: start; width: 100%;
   }
-  .idx > button:hover { background: var(--surface-2); }
-  .idx > button.on { background: var(--svc-bg); }
+  .idx .row > button { background: transparent; }
   .idx .dot { width: 10px; height: 10px; }
   .idx .a { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
   .idx .c { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; }
@@ -305,12 +316,40 @@
   </section>
 
   <footer>
+    الأيقونات بجانب كل قسم تفتح صفحة المنتجات المستهلكة فيه على <strong>دار الأميرات</strong>، وصفحة التجهيزات المقابلة على <strong>عوارض</strong>. أشكال الأجهزة في المخطط مرسومة على المقاسات القياسية لتجهيزات المشاغل، لا على موديل مورّد بعينه.
+    <br><br>
     المخطط أعلاه مستخرج آلياً من ملف الأوتوكاد <span style="font-family:var(--mono)">Star-Beauty-Salon-R06.dxf</span>، وكل مساحة مقيسة من مضلع غرفتها. مجموع المساحات يساوي مساحة القشرة بالضبط: 527.46 + 432.10 = 959.56 م².
   </footer>
 </div>
 
 <script>
 const ROOMS = [{"id":"g-retail-counter","fl":"g","ar":"ركن بيع المنتجات","en":"RETAIL COUNTER","t":"H","a":20.16,"cap":"12 م.ط","x1":0,"y1":0,"x2":6300,"y2":3200},{"id":"g-waiting-lounge","fl":"g","ar":"صالة الانتظار","en":"WAITING LOUNGE","t":"H","a":45.12,"cap":"18 مقعد","x1":6300,"y1":0,"x2":20400,"y2":3200},{"id":"g-reception","fl":"g","ar":"الاستقبال والكاشير","en":"RECEPTION","t":"H","a":30.08,"cap":"نقطتا خدمة","x1":20400,"y1":0,"x2":29800,"y2":3200},{"id":"g-hair-wash","fl":"g","ar":"مغاسل الشعر","en":"HAIR WASH","t":"S","a":36.08,"cap":"8 مغاسل","x1":0,"y1":3200,"x2":4400,"y2":11400},{"id":"g-cutting-styling","fl":"g","ar":"قص وتصفيف الشعر","en":"CUTTING / STYLING","t":"S","a":137.76,"cap":"20 كرسي","x1":4400,"y1":3200,"x2":21200,"y2":11400},{"id":"g-colour-mixing","fl":"g","ar":"الصبغة وغرفة الخلط","en":"COLOUR / MIXING","t":"S","a":41,"cap":"6 كراسي","x1":21200,"y1":3200,"x2":26200,"y2":11400},{"id":"g-hair-treatments","fl":"g","ar":"علاجات الشعر","en":"HAIR TREATMENTS","t":"S","a":29.52,"cap":"4 كراسي","x1":26200,"y1":3200,"x2":29800,"y2":11400},{"id":"g-main-corridor","fl":"g","ar":"الممر الرئيسي","en":"MAIN CORRIDOR","t":"H","a":47.68,"cap":"","x1":0,"y1":11400,"x2":29800,"y2":13000},{"id":"g-stair-01","fl":"g","ar":"بيت الدرج 1","en":"STAIR 01","t":"O","a":21.62,"cap":"21 قائمة","x1":0,"y1":13000,"x2":4600,"y2":17700},{"id":"g-showers-changing","fl":"g","ar":"الدشات والتبديل","en":"SHOWERS / CHANGING","t":"H","a":22.56,"cap":"5 دشات","x1":4600,"y1":13000,"x2":9400,"y2":17700},{"id":"g-moroccan-bath","fl":"g","ar":"الحمام المغربي","en":"MOROCCAN BATH","t":"S","a":34.78,"cap":"غرفتان","x1":9400,"y1":13000,"x2":16800,"y2":17700},{"id":"g-sauna-steam","fl":"g","ar":"الساونا والبخار","en":"SAUNA / STEAM","t":"S","a":21.62,"cap":"كابينتان","x1":16800,"y1":13000,"x2":21400,"y2":17700},{"id":"g-plant-room","fl":"g","ar":"غرفة المعدات","en":"PLANT ROOM","t":"O","a":17.86,"cap":"","x1":21400,"y1":13000,"x2":25200,"y2":17700},{"id":"g-stair-02","fl":"g","ar":"بيت الدرج 2","en":"STAIR 02","t":"O","a":21.62,"cap":"21 قائمة","x1":25200,"y1":13000,"x2":29800,"y2":17700},{"id":"m-gallery-walkway","fl":"m","ar":"ممر الشرفة","en":"GALLERY WALKWAY","t":"H","a":35.76,"cap":"","x1":0,"y1":3200,"x2":29800,"y2":4400},{"id":"m-makeup","fl":"m","ar":"المكياج","en":"MAKEUP","t":"S","a":49,"cap":"7 محطات","x1":0,"y1":4400,"x2":7000,"y2":11400},{"id":"m-brow-lash","fl":"m","ar":"الحواجب والرموش","en":"BROW / LASH","t":"S","a":28,"cap":"4 أسرّة","x1":7000,"y1":4400,"x2":11000,"y2":11400},{"id":"m-client-wc","fl":"m","ar":"دورات مياه الزبائن","en":"CLIENT WC","t":"H","a":16.8,"cap":"4 وحدات","x1":11000,"y1":4400,"x2":13400,"y2":11400},{"id":"m-manicure","fl":"m","ar":"المانيكير","en":"MANICURE","t":"S","a":36.4,"cap":"8 محطات","x1":13400,"y1":4400,"x2":18600,"y2":11400},{"id":"m-pedicure","fl":"m","ar":"البيديكير","en":"PEDICURE","t":"S","a":29.4,"cap":"6 كراسي","x1":18600,"y1":4400,"x2":22800,"y2":11400},{"id":"m-bridal-suite","fl":"m","ar":"جناح العرايس","en":"BRIDAL SUITE","t":"S","a":29.4,"cap":"جناح","x1":22800,"y1":4400,"x2":27000,"y2":11400},{"id":"m-laundry","fl":"m","ar":"غرفة الغسيل والمناشف","en":"LAUNDRY","t":"O","a":19.6,"cap":"","x1":27000,"y1":4400,"x2":29800,"y2":11400},{"id":"m-cross-corridor","fl":"m","ar":"الممر العرضي","en":"CROSS CORRIDOR","t":"H","a":47.68,"cap":"","x1":0,"y1":11400,"x2":29800,"y2":13000},{"id":"m-stair-01","fl":"m","ar":"بيت الدرج 1","en":"STAIR 01","t":"O","a":21.62,"cap":"21 قائمة","x1":0,"y1":13000,"x2":4600,"y2":17700},{"id":"m-facial-cabins","fl":"m","ar":"كابينات العناية بالبشرة","en":"FACIAL CABINS","t":"S","a":32.9,"cap":"3 كابينات","x1":4600,"y1":13000,"x2":11600,"y2":17700},{"id":"m-waxing-cabins","fl":"m","ar":"كابينات إزالة الشعر","en":"WAXING CABINS","t":"S","a":18.8,"cap":"كابينتان","x1":11600,"y1":13000,"x2":15600,"y2":17700},{"id":"m-laser-cabin","fl":"m","ar":"كابينة الليزر","en":"LASER CABIN","t":"S","a":15.98,"cap":"كابينة","x1":15600,"y1":13000,"x2":19000,"y2":17700},{"id":"m-massage","fl":"m","ar":"غرفة المساج","en":"MASSAGE","t":"S","a":15.98,"cap":"غرفة","x1":19000,"y1":13000,"x2":22400,"y2":17700},{"id":"m-store-staff","fl":"m","ar":"المخزن وغرفة الطاقم","en":"STORE / STAFF","t":"O","a":13.16,"cap":"","x1":22400,"y1":13000,"x2":25200,"y2":17700},{"id":"m-stair-02","fl":"m","ar":"بيت الدرج 2","en":"STAIR 02","t":"O","a":21.62,"cap":"21 قائمة","x1":25200,"y1":13000,"x2":29800,"y2":17700}];
+const SHOP = "https://daralamirat.com.sa";      // consumables - the primary supplier
+const EQP  = "https://sa.awarid.com";           // salon furniture and equipment
+const S = q => SHOP + "/ar/search?q=" + encodeURIComponent(q);
+const E = q => EQP  + "/ar/search?q=" + encodeURIComponent(q);
+const LINKS = {
+  "g-retail-counter":  { p:[SHOP+"/ar","كل المنتجات"] },
+  "g-hair-wash":       { p:[SHOP+"/ar/hair-care/c1875799075","العناية بالشعر"], e:[E("مغسلة شعر"),"مغاسل الشعر"] },
+  "g-cutting-styling": { p:[SHOP+"/ar/hair-care/c1875799075","العناية بالشعر"], e:[EQP+"/ar/category/Axwbxp","كراسي الصالون"] },
+  "g-colour-mixing":   { p:[S("صبغة شعر"),"صبغات الشعر"], e:[E("ترولي صالون"),"ترولي الصبغة"] },
+  "g-hair-treatments": { p:[SHOP+"/ar/hair-care/c1875799075","العناية بالشعر"], e:[E("سشوار ستاند"),"أجهزة العلاج"] },
+  "g-showers-changing":{ p:[SHOP+"/ar/Personal-care/c1144815059","العناية الشخصية"] },
+  "g-moroccan-bath":   { p:[SHOP+"/ar/body-care/c254403014","العناية بالجسم"], e:[E("حمام مغربي"),"تجهيزات الحمام"] },
+  "g-sauna-steam":     { p:[SHOP+"/ar/body-care/c254403014","العناية بالجسم"], e:[E("ساونا"),"كابينات الساونا"] },
+  "m-makeup":          { p:[S("مكياج"),"المكياج"], e:[E("كرسي مكياج"),"محطات المكياج"] },
+  "m-brow-lash":       { p:[S("الحواجب"),"الحواجب والرموش"], e:[E("سرير تجميل"),"أسرّة التجميل"] },
+  "m-manicure":        { p:[SHOP+"/ar/Perfection-and-feet-care/c718483392","العناية باليدين"], e:[E("طاولة مانيكير"),"طاولات المانيكير"] },
+  "m-pedicure":        { p:[SHOP+"/ar/"+encodeURIComponent("العناية-بالقدمين")+"/c1687735298","العناية بالقدمين"], e:[E("كرسي بيديكير"),"كراسي البيديكير"] },
+  "m-bridal-suite":    { p:[S("مكياج"),"المكياج"], e:[E("كرسي مكياج"),"تجهيزات الجناح"] },
+  "m-facial-cabins":   { p:[SHOP+"/ar/Face-care/c1667736516","العناية بالوجه"], e:[E("سرير فيشل"),"أسرّة الفيشل"] },
+  "m-waxing-cabins":   { p:[S("إزالة الشعر"),"إزالة الشعر"], e:[E("سرير تجميل"),"أسرّة الكابينة"] },
+  "m-laser-cabin":     { p:[S("إزالة الشعر"),"إزالة الشعر"], e:[E("جهاز ليزر"),"أجهزة الليزر"] },
+  "m-massage":         { p:[SHOP+"/ar/body-care/c254403014","العناية بالجسم"], e:[E("سرير مساج"),"أسرّة المساج"] },
+  "g-reception":       { e:[E("كاونتر استقبال"),"كاونتر الاستقبال"] },
+  "g-waiting-lounge":  { e:[E("كنب انتظار"),"أثاث الانتظار"] },
+  "m-laundry":         { e:[E("غسالة"),"غسالات ومجففات"] }
+};
 const H = 18100, FIT = { x: -500, y: -300, w: 30800, h: 18700 };
 const svgs = { g: document.getElementById('svg-g'), m: document.getElementById('svg-m') };
 const view = { g: { ...FIT }, m: { ...FIT } };
@@ -367,7 +406,7 @@ function setFloor(f) {
 function clearSel() {
   document.querySelectorAll('.rm.sel,.rm.flash').forEach(n => n.classList.remove('sel', 'flash'));
   document.querySelectorAll('.rooms').forEach(n => n.classList.remove('picked'));
-  document.querySelectorAll('.idx > button.on').forEach(n => n.classList.remove('on'));
+  document.querySelectorAll('.idx .row.on').forEach(n => n.classList.remove('on'));
   sel = null;
   detail.innerHTML = '<span class="hintx">اضغط أي قسم بالمخطط لعرض بياناته، أو استخدم القوائم بالأسفل.</span>';
 }
@@ -380,7 +419,12 @@ function showDetail(r) {
     (r.cap ? `<span class="fig">${r.cap}</span>` : '') +
     `<span class="en">${r.x2 - r.x1} × ${r.y2 - r.y1} مم</span>` +
     `<span class="spacer"></span>` +
-    `<button class="wide" id="clr" style="font-family:var(--ar);font-size:13px;background:none;border:1px solid var(--rule-strong);padding:5px 12px;color:var(--ink-2);cursor:pointer">إلغاء التحديد</button>`;
+    `<span class="dlinks"></span>` +
+    `<button id="clr">إلغاء التحديد</button>`;
+  const host = detail.querySelector('.dlinks');
+  const L = LINKS[r.id];
+  if (L) { for (const k of ['p', 'e']) { const c = chip(L[k], k); if (c) host.appendChild(c); } }
+  else { host.innerHTML = '<span class="hintx">لا يوجد رابط منتجات لهذا القسم</span>'; }
   document.getElementById('clr').onclick = () => { clearSel(); animateTo(floor, { ...FIT }, 550); };
 }
 function pick(id, opts) {
@@ -396,22 +440,39 @@ function pick(id, opts) {
     g.parentNode.appendChild(g);
     setTimeout(() => g.classList.remove('flash'), 1600);
   }
-  document.querySelectorAll(`.idx > button[data-id="${id}"]`).forEach(b => b.classList.add('on'));
+  document.querySelectorAll(`.idx .row[data-id=""]`).forEach(b => b.classList.add("on"));
   showDetail(r);
   zoomToRoom(r);
   if (opts && opts.scroll) document.getElementById('plan').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+}
+
+const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4L11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+function chip(pair, kind) {
+  if (!pair) return '';
+  const a = document.createElement('a');
+  a.className = 'plink' + (kind === 'e' ? ' eq' : '');
+  a.href = pair[0]; a.target = '_blank'; a.rel = 'noopener noreferrer';
+  a.title = (kind === 'e' ? 'تجهيزات: ' : 'منتجات: ') + pair[1];
+  a.innerHTML = ICON + '<span>' + pair[1] + '</span>';
+  a.addEventListener('click', e => e.stopPropagation());
+  return a;
 }
 
 // build index lists
 for (const f of ['g', 'm']) {
   const host = document.getElementById('idx-' + f);
   ROOMS.filter(r => r.fl === f).forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'row'; row.dataset.id = r.id;
     const b = document.createElement('button');
     b.dataset.id = r.id;
     b.innerHTML = `<span class="dot" style="background:${TYPEC[r.t]}"></span><span>${r.ar}</span>` +
                   `<span class="c">${r.cap || ''}</span><span class="a">${r.a.toFixed(2)}</span>`;
     b.onclick = () => pick(r.id, { scroll: true });
-    host.appendChild(b);
+    row.appendChild(b);
+    const L = LINKS[r.id];
+    if (L) { for (const k of ['p', 'e']) { const c = chip(L[k], k); if (c) row.appendChild(c); } }
+    host.appendChild(row);
   });
 }
 // plan clicks
